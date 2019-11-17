@@ -10,6 +10,7 @@ namespace Product.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
+        bool disposed = false;
         public ICategoryRepository Categories { get; private set; }
 
         public IProductRepository Products { get; private set; }
@@ -24,12 +25,28 @@ namespace Product.Persistence
 
         public async Task<int> Complete()
         {
-            return await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync().ConfigureAwait(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+
+            disposed = true;
         }
 
         public void Dispose()
         {
-            _context.Dispose();
+            // Dispose of unmanaged resources.
+            Dispose(true);
+            // Suppress finalization.
+            GC.SuppressFinalize(this);
         }
     }
 }
