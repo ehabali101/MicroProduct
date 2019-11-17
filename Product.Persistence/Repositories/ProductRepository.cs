@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Product.Persistence.Repositories
 {
@@ -16,18 +17,18 @@ namespace Product.Persistence.Repositories
             _context = context;
         }
 
-        public IEnumerable<ProductInfo> GetProducts(int CategoryId)
+        public async Task<IEnumerable<ProductInfo>> GetProducts(int CategoryId)
         {
-            return _context.Products
+            return await _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == CategoryId).ToList();
+                .Where(p => p.CategoryId == CategoryId).ToListAsync();
         }
 
-        public IEnumerable<ProductInfo> GetProductsWithCategeory()
+        public async Task<IEnumerable<ProductInfo>> GetProductsWithCategeory()
         {
-            return _context.Products
+            return await _context.Products
                 .Include(p => p.Category)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

@@ -4,6 +4,7 @@ using Product.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Product.Persistence
 {
@@ -21,9 +22,9 @@ namespace Product.Persistence
             Products = new ProductRepository(context);
         }
 
-        public int Complete()
+        public async Task<int> Complete()
         {
-            return _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

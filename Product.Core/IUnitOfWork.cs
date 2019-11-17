@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Product.Core
 {
@@ -10,6 +11,6 @@ namespace Product.Core
         ICategoryRepository Categories { get; }
         IProductRepository Products { get; }
 
-        int Complete();
+        Task<int> Complete();
     }
 }
