@@ -11,6 +11,8 @@ namespace Product.Core
         ICategoryRepository Categories { get; }
         IProductRepository Products { get; }
 
-        Task<int> Complete();
+        int Complete();
+
+        Task<int> CompleteAsync();
     }
 }

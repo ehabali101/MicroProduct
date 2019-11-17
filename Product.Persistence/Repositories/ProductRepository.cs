@@ -21,14 +21,14 @@ namespace Product.Persistence.Repositories
         {
             return await _context.Products
                 .Include(p => p.Category)
-                .Where(p => p.CategoryId == CategoryId).ToListAsync().ConfigureAwait(true);
+                .Where(p => p.CategoryId == CategoryId).ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<ProductInfo>> GetProductsWithCategeory()
         {
             return await _context.Products
                 .Include(p => p.Category)
-                .ToListAsync().ConfigureAwait(true);
+                .ToListAsync().ConfigureAwait(false);
         }
     }
 }

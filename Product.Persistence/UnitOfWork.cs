@@ -2,8 +2,6 @@
 using Product.Core.Repositories;
 using Product.Persistence.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Product.Persistence
@@ -23,9 +21,14 @@ namespace Product.Persistence
             Products = new ProductRepository(context);
         }
 
-        public async Task<int> Complete()
+        public async Task<int> CompleteAsync()
         {
-            return await _context.SaveChangesAsync().ConfigureAwait(true);
+            return await _context.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+        public int Complete()
+        {
+            return  _context.SaveChanges();
         }
 
         protected virtual void Dispose(bool disposing)
