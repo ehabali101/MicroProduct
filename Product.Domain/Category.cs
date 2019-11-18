@@ -15,5 +15,7 @@ namespace Product.Domain
         [StringLength(250)]
         public string Description { get; set; }
 
+        public ICollection<ProductInfo> Products { get; set; }
+
     }
 }

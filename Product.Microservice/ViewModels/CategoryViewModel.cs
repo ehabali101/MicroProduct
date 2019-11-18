@@ -12,5 +12,7 @@ namespace Product.Microservice.ViewModels
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public ICollection<ProductViewModel> Products { get; set; }
     }
 }
