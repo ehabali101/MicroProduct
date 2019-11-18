@@ -17,6 +17,13 @@ namespace Product.Persistence.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<ProductInfo>> GetProducts()
+        {
+            return await _context.Products
+                .Include(p => p.Category)
+                .ToListAsync().ConfigureAwait(false);
+        }
+
         public async Task<IEnumerable<ProductInfo>> GetProducts(int CategoryId)
         {
             return await _context.Products
