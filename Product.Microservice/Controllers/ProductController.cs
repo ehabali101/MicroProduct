@@ -26,7 +26,6 @@ namespace Product.Microservice.Controllers
         public IActionResult Get()
         {
             var products = _unitOfWork.Products.GetProducts();
-            // Mapper.Map<List<Person>, List<PersonView>>(people);
             var viewModel = _mapper.Map<IEnumerable< ProductViewModel>>(products.Result);
             return Ok(viewModel);
         }
@@ -47,6 +46,7 @@ namespace Product.Microservice.Controllers
             var product = _mapper.Map<ProductInfo>(viewModel);
             _unitOfWork.Products.Add(product);
             _unitOfWork.Complete();
+            viewModel.Id = product.Id;
             return CreatedAtAction(nameof(Get), new { id = product.Id }, viewModel);
         }
 

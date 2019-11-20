@@ -41,7 +41,7 @@ namespace Product.Web.Controllers
 
             }
             
-            return View();
+            return View(products);
         }
 
         // GET: Product/Details/5
@@ -59,18 +59,26 @@ namespace Product.Web.Controllers
         // POST: Product/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ProductViewModel viewModel)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add insert logic here
+                client.BaseAddress = new Uri("https://localhost:44372/api/product");
 
-                return RedirectToAction(nameof(Index));
+                //HTTP POST
+                var postTask = client.PostAsJsonAsync<ProductViewModel>("product", viewModel);
+                postTask.Wait();
+
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+
+            return View(viewModel);
         }
 
         // GET: Product/Edit/5

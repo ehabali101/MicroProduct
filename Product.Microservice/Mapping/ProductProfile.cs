@@ -14,7 +14,9 @@ namespace Product.Microservice.Mapping
         public ProductProfile()
         {
             CreateMap<ProductInfo, ProductViewModel>();
-            CreateMap<ProductViewModel, ProductInfo>();
+            CreateMap<ProductViewModel, ProductInfo>()
+                .ForMember(p => p.CategoryId, opt => opt.MapFrom(vm => vm.Category.Id))
+                .ForMember(p => p.Category, opt => opt.Ignore());
         }
     }
 }

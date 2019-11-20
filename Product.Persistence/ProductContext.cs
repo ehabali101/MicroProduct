@@ -11,5 +11,14 @@ namespace Product.Persistence
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductInfo> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(e => e.Category);
+        }
     }
 }
