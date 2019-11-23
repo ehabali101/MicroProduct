@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A28B6F74-8701-46FD-B955-991DC0BC70AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Bus", "Infra.Bus", "{21E95FB3-7AA7-4072-8F32-76FBC9DDD3F3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Domain", "Product.Domain\Product.Domain.csproj", "{2C93768D-47CB-475F-9996-837ECDDF7FDF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Microservice", "Product.Microservice\Product.Microservice.csproj", "{F28E69C2-2AA4-4AD5-BDB0-ADCC33166C74}"
@@ -23,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Persistence", "Prod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8EE3B727-C063-4345-A3C6-861B026E4C85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Web", "Product.Web\Product.Web.csproj", "{C399DD4F-2C4B-4F57-A772-6F9A66A7237E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Web", "Product.Web\Product.Web.csproj", "{C399DD4F-2C4B-4F57-A772-6F9A66A7237E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

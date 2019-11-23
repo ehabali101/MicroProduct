@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Web.Models;
@@ -27,10 +26,10 @@ namespace Product.Web.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<IList<ProductViewModel>>();
-                    readTask.Wait();
+                    //var readTask = result.Content.ReadAsAsync<IList<ProductViewModel>>();
+                    //readTask.Wait();
 
-                    products = readTask.Result;
+                    //products = readTask.Result;
                 }
                 else //web api sent error response 
                 {
@@ -66,14 +65,14 @@ namespace Product.Web.Controllers
                 client.BaseAddress = new Uri("https://localhost:44372/api/product");
 
                 //HTTP POST
-                var postTask = client.PostAsJsonAsync<ProductViewModel>("product", viewModel);
-                postTask.Wait();
+                //var response = client.PostAsync<ProductViewModel>("product", viewModel);
+                //response.Wait();
 
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
-                }
+                //var result = response.Result;
+                //if (result.IsSuccessStatusCode)
+                //{
+                //    return RedirectToAction("Index");
+                //}
             }
 
             ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
